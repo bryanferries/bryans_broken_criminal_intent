@@ -1,3 +1,4 @@
+//Working Ch. 9 - Criminal Intent 2 - Recycler View
 package com.bignerdranch.android.criminalintent
 
 import android.os.Bundle
@@ -11,9 +12,9 @@ class MainActivity : AppCompatActivity() {
 
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container)
-
+//Set up the fragment manager
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment)
