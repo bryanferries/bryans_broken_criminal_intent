@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container)
-
+//Set up the fragment manager
         if (currentFragment == null) {
             val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
