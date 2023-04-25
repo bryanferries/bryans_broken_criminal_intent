@@ -10,7 +10,9 @@ abstract class CrimeDatabase : RoomDatabase() {
 
     abstract fun crimeDao(): CrimeDao
 
-    override fun createOpenHelper(config: DatabaseConfiguration?): SupportSQLiteOpenHelper {
+
+/*
+    override fun createOpenHelper(config: DatabaseConfiguration): SupportSQLiteOpenHelper {
         TODO("Not yet implemented")
     }
 
@@ -21,4 +23,7 @@ abstract class CrimeDatabase : RoomDatabase() {
     override fun clearAllTables() {
         TODO("Not yet implemented")
     }
+*/
+
+
 }

@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.bignerdranch.android.criminalintent.database.CrimeDatabase
 import java.util.*
@@ -17,17 +18,33 @@ class CrimeRepository private constructor(context: Context) {
 
     private val crimeDao = database.crimeDao()
 
-    fun getCrimes(): List<Crime> = crimeDao.getCrimes()
+/* private val executor = Executors.newSingleThreadExecutor()
+Told to remove before pushing
+ */
 
-    fun getCrime(id: UUID): Crime? = crimeDao.getCrime(id)
+    fun getCrimes(): LiveData<List<Crime>> = crimeDao.getCrimes()
+
+    fun getCrime(id: UUID): LiveData<Crime?> = crimeDao.getCrime(id)
+
+/*
+    fun addCrime(crime: Crime) {
+        executor.execute {
+            crimeDao.addCrime(crime)
+        }
+    }
+Remove this eventually
+ */
+
 
     companion object {
         private var INSTANCE: CrimeRepository? = null
+
         fun initialize(context: Context) {
             if (INSTANCE == null) {
                 INSTANCE = CrimeRepository(context)
             }
         }
+
         fun get(): CrimeRepository {
             return INSTANCE ?:
             throw IllegalStateException("CrimeRepository must be initialized")
